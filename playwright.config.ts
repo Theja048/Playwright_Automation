@@ -1,4 +1,5 @@
 import { defineConfig, devices } from "@playwright/test";
+import { on } from "events";
 
 /**
  * Read environment variables from file.
@@ -29,25 +30,27 @@ export default defineConfig({
 		// baseURL: 'http://localhost:3000',
 
 		/* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
+		screenshot: "on",
+		testIdAttribute: "data-tab-item",
 		trace: "on-first-retry",
 	},
 
 	/* Configure projects for major browsers */
 	projects: [
-		{
-			name: "chromium",
-			use: { ...devices["Desktop Chrome"] },
-		},
+		// {
+		// 	name: "chromium",
+		// 	use: { ...devices["Desktop Chrome"] },
+		// },
 
-		{
-			name: "firefox",
-			use: { ...devices["Desktop Firefox"] },
-		},
+		// {
+		// 	name: "firefox",
+		// 	use: { ...devices["Desktop Firefox"] },
+		// },
 
-		{
-			name: "webkit",
-			use: { ...devices["Desktop Safari"] },
-		},
+		// {
+		// 	name: "webkit",
+		// 	use: { ...devices["Desktop Safari"] },
+		// },
 
 		/* Test against mobile viewports. */
 		// {
@@ -64,10 +67,10 @@ export default defineConfig({
 		// 		name: "Microsoft Edge",
 		// 		use: { ...devices["Desktop Edge"], channel: "msedge" },
 		// 	},
-		// 	{
-		// 		name: "Google Chrome",
-		// 		use: { ...devices["Desktop Chrome"], channel: "chrome" },
-		// 	},
+		{
+			name: "Google Chrome",
+			use: { ...devices["Desktop Chrome"], channel: "chrome" },
+		},
 	],
 
 	/* Run your local dev server before starting the tests */
