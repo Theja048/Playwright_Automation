@@ -17,7 +17,7 @@ test("test", async ({ page }) => {
 	});
 	//search for specific file
 	await test.step("navigate to Telusko channel", async () => {
-		await page.locator('a:has-text("Telusko")').first().click();
+		await page.locator('a:has-text("Telusko")').first().press("Enter");
 	});
 
 	//validate title
